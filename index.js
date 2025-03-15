@@ -5,6 +5,7 @@ const ramens = [
     { id: 4, name: "Gyukotsu Ramen", restaurant: "Ichiran", image: "images/gyukotsu.jpg", rating: 2, comment: "Spicy!" },
     { id: 5, name: "Kojiro Ramen", restaurant: "Menya", image: "images/kojiro.jpg", rating: 3, comment: "Yummy!" }
  ];
+ //function to display ramen resturants ,images,rating and comments
  const ramenList = document.getElementById("ramen-img");
  ramens.forEach(ramen => {
     const ramenDiv = document.createElement("div");
@@ -20,7 +21,7 @@ const ramens = [
 
 //function to handle new ramen form submission
 function addSubmitListener() {
-    document.getElementById("new-ramen-form").addEventListener("submit", function(event) {
+    document.getElementById("ramen-form").addEventListener("submit", function(event) {
         event.preventDefault();
     
 
@@ -32,6 +33,7 @@ function addSubmitListener() {
 
     const ramenImage = document.createElement("img");
     ramenImage.src = image;
+    ramenImage.alt = name;
     ramenImage.width = 200;
 
     document.getElementById("ramen-menu").appendChild(ramenImage);
