@@ -1,0 +1,16 @@
+.ramen-form {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    margin: 10px auto;
+}
+
+.title {
+    text-align: center;
+    background-color: blue;
+}
+
+.body {
+    background-color:wheat;
+}
+
