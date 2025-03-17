@@ -15,15 +15,17 @@ function showRamenMenu() {
     ramens.forEach(ramen => {
         const ramenDiv = document.createElement("div");
         ramenDiv.innerHTML = `
-            <h2>${ramen.name}</h2>
-            <p><strong>Restaurant:</strong> ${ramen.restaurant}</p>
-            <img src="${ramen.image}" alt="${ramen.name} Ramen" width="200">
-            <p><strong>Rating:</strong> ${ramen.rating}/10</p>
-            <p><strong>Comment:</strong> ${ramen.comment}</p>
-            <hr>
+            
+            <img src="${ramen.image}" alt="${ramen.name} Ramen" style="width: 100px; height: 100px;">
+            
+            
         `;
+        ramenDiv.style.float = "left";
+        ramenDiv.style.textAlign = "center";
+        
 
         menuContainer.appendChild(ramenDiv);
+        menuContainer.style.textAlign = "center";
     });
 
 }
