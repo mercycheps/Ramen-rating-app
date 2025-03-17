@@ -61,8 +61,10 @@ function addSubmitListener() {
         const rating = document.getElementById("rating").value;
         const comment = document.getElementById("comment").value;
         const ramen = { id: ramens.length + 1, name, restaurant, image, rating, comment };
+        if(!name || !restaurant || !image || !rating || !comment) return;
         ramens.push(ramen);
         showRamenMenu();
+        showRamenDetails(ramen.id);
 // creating new ramen div
 //         const newRamenDiv = document.createElement("div");
 //         newRamenDiv.innerHTML = `
