@@ -8,7 +8,7 @@ const ramens = [
     { id: 5, name: "Kojiro Ramen", restaurant: "Menya", image: "images/kojiro.jpg", rating: 7, comment: "Yummy!" }
 ];
 ////function to display ramen resturants ,images,rating and comments
-function showRamenMenu() {
+function displayRamens() {
     const menuContainer = document.getElementById("ramen-menu");
     menuContainer.innerHTML = "";
 
@@ -34,7 +34,7 @@ function showRamenMenu() {
 function deleteRamen(ramenId) {
     const ramenIndex = ramens.findIndex(ramen => ramen.id === ramenId);
     ramens[ramenIndex] = null;
-    showRamenMenu();
+    displayRamens();
 }
 
 function showRamenDetails(ramenId) {
@@ -63,27 +63,15 @@ function addSubmitListener() {
         const ramen = { id: ramens.length + 1, name, restaurant, image, rating, comment };
         if(!name || !restaurant || !image || !rating || !comment) return;
         ramens.push(ramen);
-        showRamenMenu();
+        displayRamens();
         showRamenDetails(ramen.id);
-// creating new ramen div
-//         const newRamenDiv = document.createElement("div");
-//         newRamenDiv.innerHTML = `
-//             <h2>${name}</h2>
-//             <p><strong>Restaurant:</strong> ${restaurant}</p>
-//             <img src="${image}" alt="${name} Ramen" width="200">
-//             <p><strong>Rating:</strong> ${rating}</p>
-//             <p><strong>Comment:</strong> ${comment}</p>
-//              <hr>
-//         `;
-// // appending new ramen div
-//         document.getElementById("ramen-menu").appendChild(newRamenDiv);
 
         event.target.reset();
     });
 }
 // the main function
 function main() {
-    showRamenMenu();  
+    displayRamens();  
     showRamenDetails(ramens[0].id); 
     addSubmitListener();
 }
