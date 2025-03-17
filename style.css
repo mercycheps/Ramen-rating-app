@@ -24,4 +24,29 @@ footer{
 button{
     background-color: blue;
     text-align: center;
+    color: white;
+}
+
+#ramen-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    /* position: relative; */
+}
+
+#ramen-details {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.delete-ramen {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 20px;
+    position: absolute;
+    top: 5;
 }

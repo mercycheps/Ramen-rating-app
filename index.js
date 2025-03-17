@@ -13,21 +13,41 @@ function showRamenMenu() {
     menuContainer.innerHTML = "";
 
     ramens.forEach(ramen => {
+        if(!ramen) return;
         const ramenDiv = document.createElement("div");
         ramenDiv.innerHTML = `
             
-            <img src="${ramen.image}" alt="${ramen.name} Ramen" style="width: 100px; height: 100px;">
-            
+            <img onclick="showRamenDetails(${ramen.id})" src="${ramen.image}" alt="${ramen.name} Ramen" style="width: 100px; height: 100px;">
+            <button class="delete-ramen" onclick="deleteRamen(${ramen.id})" > x </button>
             
         `;
-        ramenDiv.style.float = "left";
+        // ramenDiv.style.float = "left";
         ramenDiv.style.textAlign = "center";
         
 
         menuContainer.appendChild(ramenDiv);
-        menuContainer.style.textAlign = "center";
+        // menuContainer.style.textAlign = "left";
     });
 
+}
+// function to delete ramen
+function deleteRamen(ramenId) {
+    const ramenIndex = ramens.findIndex(ramen => ramen.id === ramenId);
+    ramens[ramenIndex] = null;
+    showRamenMenu();
+}
+
+function showRamenDetails(ramenId) {
+    const ramen = ramens.find(ramen => ramen.id === ramenId);
+    const ramenDetails = document.getElementById("ramen-details");
+    ramenDetails.innerHTML = `
+    <br/>
+        <h2>${ramen.name}</h2>
+        <p><strong>Restaurant:</strong> ${ramen.restaurant}</p>
+        <img src="${ramen.image}" alt="${ramen.name} Ramen" width="200">
+        <p><strong>Rating:</strong> ${ramen.rating}</p>
+        <p><strong>Comment:</strong> ${ramen.comment}</p>
+    `;
 }
 
 
@@ -40,25 +60,29 @@ function addSubmitListener() {
         const image = document.getElementById("image").value;
         const rating = document.getElementById("rating").value;
         const comment = document.getElementById("comment").value;
+        const ramen = { id: ramens.length + 1, name, restaurant, image, rating, comment };
+        ramens.push(ramen);
+        showRamenMenu();
 // creating new ramen div
-        const newRamenDiv = document.createElement("div");
-        newRamenDiv.innerHTML = `
-            <h2>${name}</h2>
-            <p><strong>Restaurant:</strong> ${restaurant}</p>
-            <img src="${image}" alt="${name} Ramen" width="200">
-            <p><strong>Rating:</strong> ${rating}</p>
-            <p><strong>Comment:</strong> ${comment}</p>
-             <hr>
-        `;
-// appending new ramen div
-        document.getElementById("ramen-menu").appendChild(newRamenDiv);
+//         const newRamenDiv = document.createElement("div");
+//         newRamenDiv.innerHTML = `
+//             <h2>${name}</h2>
+//             <p><strong>Restaurant:</strong> ${restaurant}</p>
+//             <img src="${image}" alt="${name} Ramen" width="200">
+//             <p><strong>Rating:</strong> ${rating}</p>
+//             <p><strong>Comment:</strong> ${comment}</p>
+//              <hr>
+//         `;
+// // appending new ramen div
+//         document.getElementById("ramen-menu").appendChild(newRamenDiv);
 
         event.target.reset();
     });
 }
 // the main function
 function main() {
-    showRamenMenu();   
+    showRamenMenu();  
+    showRamenDetails(ramens[0].id); 
     addSubmitListener();
 }
 
