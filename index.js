@@ -17,7 +17,7 @@ function displayRamens() {
         const ramenDiv = document.createElement("div");
         ramenDiv.innerHTML = `
             
-            <img onclick="showRamenDetails(${ramen.id})" src="${ramen.image}" alt="${ramen.name} Ramen" style="width: 100px; height: 100px;">
+            <img onclick="handleClick(${ramen.id})" src="${ramen.image}" alt="${ramen.name} Ramen" style="width: 100px; height: 100px;">
             <button class="delete-ramen" onclick="deleteRamen(${ramen.id})" > x </button>
             
         `;
@@ -37,9 +37,9 @@ function deleteRamen(ramenId) {
     displayRamens();
 }
 
-function showRamenDetails(ramenId) {
+function handleClick(ramenId) {
     const ramen = ramens.find(ramen => ramen.id === ramenId);
-    const ramenDetails = document.getElementById("ramen-details");
+    const ramenDetails = document.getElementById("ramen-detail");
     ramenDetails.innerHTML = `
     <br/>
         <h2>${ramen.name}</h2>
@@ -64,7 +64,7 @@ function addSubmitListener() {
         if(!name || !restaurant || !image || !rating || !comment) return;
         ramens.push(ramen);
         displayRamens();
-        showRamenDetails(ramen.id);
+       // handleClick(ramen.id);
 
         event.target.reset();
     });
@@ -72,7 +72,7 @@ function addSubmitListener() {
 // the main function
 function main() {
     displayRamens();  
-    showRamenDetails(ramens[0].id); 
+   handleClick(ramens[0].id); 
     addSubmitListener();
 }
 
